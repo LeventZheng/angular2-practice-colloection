@@ -1,28 +1,29 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule }       from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
-import { Routes, RouterModule }   from '@angular/router';
 
-import { AppComponent }   from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HeroesModule } from './heroes/heroes.module';
+import { AppComponent }         from './app.component';
+import { AppRoutingModule }     from './app-routing.module';
 
+import { HeroesModule }         from './heroes/heroes.module'
 import { CrisisListComponent }  from './crisis-list.component';
-
-const routes: Routes = [
-
-];
 @NgModule({
-  imports:      [ 
-    BrowserModule, 
+  imports: [
+    BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    HeroesModule
+    HeroesModule,
+    AppRoutingModule
+    // RouterModule.forRoot([
+    //   { path: 'crisis-center', component: CrisisListComponent },
+    //   { path: 'heroes', component: HeroListComponent },
+    //   { path:'', component: CrisisListComponent}
+    // ])
   ],
-  declarations: [ 
-    AppComponent, 
+  declarations: [
+    AppComponent,
     CrisisListComponent
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}

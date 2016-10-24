@@ -1,65 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Hero, HeroService } from './hero.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-heroes',
-  template: `
-    <h2>HEROES</h2>
-    <ul class="items">
-      <li *ngFor="let hero of heroes"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </li>
-    </ul>
-  `,
-  styleUrls:['hero-list.component.css']
+  // selector: 'my-heroes',
+  templateUrl:'hero-list.component.html',
+  styleUrls: ['hero-list.component.css']
 })
 
 export class HeroListComponent implements OnInit{
   heroes: Hero[];
-  selectedHero: Hero;
+  private selectedId: number;
 
-  constructor(private heroService: HeroService,private router: Router) { }
-  
-  getHeroes(): void {
-    this.heroService
-        .getHeroes()
-        .then(heroes => this.heroes = heroes);
-  }
-  
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.heroService.create(name)
-        .then(hero => {
-          this.heroes.push(hero);
-          this.selectedHero = null;
-        });
-  }
-
-  delete(hero: Hero): void {
-    this.heroService
-      .delete(hero.id)
-      .then(() => {
-        this.heroes = this.heroes.filter(h => h !== hero);
-        if (this.selectedHero === hero) { this.selectedHero = null; }
-      });
-  }
+  constructor(
+    private service: HeroService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    // this.getHeroes();
+    this.route.params.forEach((params: Params) => {
+        this.selectedId = +params['id'];//把字符串转换成整数
+        this.service.getHeroes()
+          .then(heroes => this.heroes = heroes);
+      });
   }
+  isSelected(hero: Hero) { return hero.id === this.selectedId; }
 
   onSelect(hero: Hero): void {
     // this.selectedHero = hero;
     this.router.navigate(['/hero', hero.id]);
-  }
-
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    //示例传多参数
+    //this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }
   }
 }

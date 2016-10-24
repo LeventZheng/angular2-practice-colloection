@@ -12,57 +12,35 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var hero_service_1 = require('./hero.service');
 var HeroListComponent = (function () {
-    function HeroListComponent(heroService, router) {
-        this.heroService = heroService;
+    function HeroListComponent(service, route, router) {
+        this.service = service;
+        this.route = route;
         this.router = router;
     }
-    HeroListComponent.prototype.getHeroes = function () {
-        var _this = this;
-        this.heroService
-            .getHeroes()
-            .then(function (heroes) { return _this.heroes = heroes; });
-    };
-    HeroListComponent.prototype.add = function (name) {
-        var _this = this;
-        name = name.trim();
-        if (!name) {
-            return;
-        }
-        this.heroService.create(name)
-            .then(function (hero) {
-            _this.heroes.push(hero);
-            _this.selectedHero = null;
-        });
-    };
-    HeroListComponent.prototype.delete = function (hero) {
-        var _this = this;
-        this.heroService
-            .delete(hero.id)
-            .then(function () {
-            _this.heroes = _this.heroes.filter(function (h) { return h !== hero; });
-            if (_this.selectedHero === hero) {
-                _this.selectedHero = null;
-            }
-        });
-    };
     HeroListComponent.prototype.ngOnInit = function () {
-        this.getHeroes();
+        var _this = this;
+        // this.getHeroes();
+        this.route.params.forEach(function (params) {
+            _this.selectedId = +params['id']; //把字符串转换成整数
+            _this.service.getHeroes()
+                .then(function (heroes) { return _this.heroes = heroes; });
+        });
     };
+    HeroListComponent.prototype.isSelected = function (hero) { return hero.id === this.selectedId; };
     HeroListComponent.prototype.onSelect = function (hero) {
         // this.selectedHero = hero;
         this.router.navigate(['/hero', hero.id]);
-    };
-    HeroListComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['/detail', this.selectedHero.id]);
+        //示例传多参数
+        //this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }
     };
     HeroListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-heroes',
-            template: "\n    <h2>HEROES</h2>\n    <ul class=\"items\">\n      <li *ngFor=\"let hero of heroes\"\n        (click)=\"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n  ",
+            // selector: 'my-heroes',
+            templateUrl: 'hero-list.component.html',
             styleUrls: ['hero-list.component.css']
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, router_1.Router])
     ], HeroListComponent);
     return HeroListComponent;
 }());

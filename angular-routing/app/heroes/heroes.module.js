@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
-var heroes_routing_module_1 = require('./heroes-routing.module');
 var hero_list_component_1 = require('./hero-list.component');
 var hero_detail_component_1 = require('./hero-detail.component');
 var hero_service_1 = require('./hero.service');
+var heroes_routing_module_1 = require('./heroes-routing.module');
 var HeroesModule = (function () {
     function HeroesModule() {
     }
@@ -25,7 +25,7 @@ var HeroesModule = (function () {
                 forms_1.FormsModule,
                 heroes_routing_module_1.HeroRoutingModule
             ],
-            exports: [
+            declarations: [
                 hero_list_component_1.HeroListComponent,
                 hero_detail_component_1.HeroDetailComponent
             ],

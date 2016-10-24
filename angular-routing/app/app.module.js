@@ -15,7 +15,6 @@ var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
 var heroes_module_1 = require('./heroes/heroes.module');
 var crisis_list_component_1 = require('./crisis-list.component');
-var routes = [];
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,8 +23,8 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                app_routing_module_1.AppRoutingModule,
-                heroes_module_1.HeroesModule
+                heroes_module_1.HeroesModule,
+                app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,

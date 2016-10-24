@@ -14,12 +14,33 @@ var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var hero_service_1 = require('./hero.service');
 var HeroDetailComponent = (function () {
-    function HeroDetailComponent(service, route, router, location) {
-        this.service = service;
+    function HeroDetailComponent(route, router, service, location) {
         this.route = route;
         this.router = router;
+        this.service = service;
         this.location = location;
     }
+    Object.defineProperty(HeroDetailComponent.prototype, "routeAnimation", {
+        get: function () {
+            return true;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HeroDetailComponent.prototype, "display", {
+        get: function () {
+            return 'block';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HeroDetailComponent.prototype, "position", {
+        get: function () {
+            return 'absolute';
+        },
+        enumerable: true,
+        configurable: true
+    });
     HeroDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
@@ -28,22 +49,56 @@ var HeroDetailComponent = (function () {
                 .then(function (hero) { return _this.hero = hero; });
         });
     };
-    HeroDetailComponent.prototype.save = function () {
-        var _this = this;
-        this.service.update(this.hero)
-            .then(function () { return _this.goBack(); });
+    HeroDetailComponent.prototype.gotoHeroes = function () {
+        var heroId = this.hero ? this.hero.id : null;
+        // Pass along the hero id if available
+        // so that the HeroList component can select that hero.
+        this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }]);
     };
-    HeroDetailComponent.prototype.goBack = function () {
-        this.location.back();
-    };
+    __decorate([
+        core_1.HostBinding('@routeAnimation'), 
+        __metadata('design:type', Object)
+    ], HeroDetailComponent.prototype, "routeAnimation", null);
+    __decorate([
+        core_1.HostBinding('style.display'), 
+        __metadata('design:type', Object)
+    ], HeroDetailComponent.prototype, "display", null);
+    __decorate([
+        core_1.HostBinding('style.position'), 
+        __metadata('design:type', Object)
+    ], HeroDetailComponent.prototype, "position", null);
     HeroDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-hero-detail',
+            // selector: 'my-hero-detail',
             templateUrl: 'hero-detail.component.html',
-            styleUrls: ['hero-detail.component.css']
+            styleUrls: ['hero-detail.component.css'],
+            animations: [
+                //匹配我们以前定义的绑定
+                core_1.trigger('routeAnimation', [
+                    core_1.state('*', core_1.style({
+                        opacity: 1,
+                        transform: 'translateX(0)'
+                    })),
+                    //组件进入应用视图时触发
+                    core_1.transition('void => *', [
+                        core_1.style({
+                            opacity: 0,
+                            transform: 'translateX(-100%)'
+                        }),
+                        core_1.animate('0.2s ease-in')
+                    ]),
+                    //离开时触发
+                    core_1.transition('* => void', [
+                        core_1.animate('0.5s ease-out', core_1.style({
+                            opacity: 0,
+                            transform: 'translateY(100%)'
+                        }))
+                    ])
+                ])
+            ]
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, router_1.Router, common_1.Location])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, hero_service_1.HeroService, common_1.Location])
     ], HeroDetailComponent);
     return HeroDetailComponent;
 }());
