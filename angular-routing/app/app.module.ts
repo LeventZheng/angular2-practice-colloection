@@ -4,24 +4,30 @@ import { FormsModule }    from '@angular/forms';
 
 import { AppComponent }         from './app.component';
 import { AppRoutingModule }     from './app-routing.module';
+import { LoginRoutingModule }   from './login-routing.module';
 
-import { HeroesModule }         from './heroes/heroes.module'
-import { CrisisListComponent }  from './crisis-list.component';
+import { HeroesModule }         from './heroes/heroes.module';
+import { CrisisCenterModule }   from './crisis-center/crisis-center.module';
+
+import { LoginComponent }       from './login.component';
+
+import { DialogService }          from './dialog.service';
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HeroesModule,
+    CrisisCenterModule,
+    LoginRoutingModule,
     AppRoutingModule
-    // RouterModule.forRoot([
-    //   { path: 'crisis-center', component: CrisisListComponent },
-    //   { path: 'heroes', component: HeroListComponent },
-    //   { path:'', component: CrisisListComponent}
-    // ])
   ],
   declarations: [
     AppComponent,
-    CrisisListComponent
+    LoginComponent
+  ],
+  providers: [
+    DialogService
   ],
   bootstrap: [ AppComponent ]
 })

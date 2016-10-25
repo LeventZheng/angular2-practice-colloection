@@ -13,8 +13,11 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
+var login_routing_module_1 = require('./login-routing.module');
 var heroes_module_1 = require('./heroes/heroes.module');
-var crisis_list_component_1 = require('./crisis-list.component');
+var crisis_center_module_1 = require('./crisis-center/crisis-center.module');
+var login_component_1 = require('./login.component');
+var dialog_service_1 = require('./dialog.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,11 +27,16 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 heroes_module_1.HeroesModule,
+                crisis_center_module_1.CrisisCenterModule,
+                login_routing_module_1.LoginRoutingModule,
                 app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,
-                crisis_list_component_1.CrisisListComponent
+                login_component_1.LoginComponent
+            ],
+            providers: [
+                dialog_service_1.DialogService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

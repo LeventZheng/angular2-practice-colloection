@@ -9,17 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var AdminComponent = (function () {
+    function AdminComponent() {
     }
-    AppComponent = __decorate([
+    AdminComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <h1 class=\"title\">Angular Router</h1>\n  <nav>\n    <a routerLink=\"/crisis-center\" routerLinkActive=\"active\">Crisis Center</a>\n    <a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n    <a routerLink=\"/admin\" routerLinkActive=\"active\">Admin</a>\n    <a routerLink=\"/login\" routerLinkActive=\"active\">Login</a>\n  </nav>\n  <router-outlet></router-outlet>\n  "
+            template: "\n    <h3>ADMIN</h3>\n    <nav>\n      <a routerLink=\"./\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Dashboard</a>\n      <a routerLink=\"./crises\" routerLinkActive=\"active\">Manage Crises</a>\n      <a routerLink=\"./heroes\" routerLinkActive=\"active\">Manage Heroes</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AdminComponent);
+    return AdminComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AdminComponent = AdminComponent;
+//# sourceMappingURL=admin.component.js.map

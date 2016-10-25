@@ -10,32 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var can_deactivate_guard_service_1 = require('./can-deactivate-guard.service');
 var auth_guard_service_1 = require('./auth-guard.service');
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
+var auth_service_1 = require('./auth.service');
+var login_component_1 = require('./login.component');
+var LoginRoutingModule = (function () {
+    function LoginRoutingModule() {
     }
-    AppRoutingModule = __decorate([
+    LoginRoutingModule = __decorate([
         core_1.NgModule({
             imports: [
-                router_1.RouterModule.forRoot([
-                    {
-                        path: 'admin',
-                        loadChildren: 'app/admin/admin.module#AdminModule',
-                        canLoad: [auth_guard_service_1.AuthGuard]
-                    }
+                router_1.RouterModule.forChild([
+                    { path: 'login', component: login_component_1.LoginComponent }
                 ])
             ],
             exports: [
                 router_1.RouterModule
             ],
             providers: [
-                can_deactivate_guard_service_1.CanDeactivateGuard
+                auth_guard_service_1.AuthGuard,
+                auth_service_1.AuthService
             ]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppRoutingModule);
-    return AppRoutingModule;
+    ], LoginRoutingModule);
+    return LoginRoutingModule;
 }());
-exports.AppRoutingModule = AppRoutingModule;
-//# sourceMappingURL=app-routing.module.js.map
+exports.LoginRoutingModule = LoginRoutingModule;
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/ 
+//# sourceMappingURL=login-routing.module.js.map
