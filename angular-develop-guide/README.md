@@ -9,10 +9,17 @@ app/communication/
 mission-control.component
 astrounaut.component
 
-共享特性模块
 app/heroes/
+
+风格之南-共享特性模块
 app/shared/
 
-核心特性模块
+风格指南-核心特性模块
 core/
 module-import-guard     //防止多次导入 CoreModule
+
+显示数据
+app/display-data/
+
+表单
+app/form
