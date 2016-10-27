@@ -9,21 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var hero_service_1 = require('./hero.service');
-var user_service_1 = require('../core/user.service');
-var HeroComponent = (function () {
-    function HeroComponent(userService) {
-        this.userName = '';
-        this.userName = userService.userName;
+var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
+var awesome_pipe_1 = require('./awesome.pipe');
+var highlight_directive_1 = require('./highlight.directive');
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    HeroComponent = __decorate([
-        core_1.Component({
-            template: "\n    <h2>Heroes of {{userName}}</h2>\n    <router-outlet></router-outlet>\n  ",
-            providers: [hero_service_1.HeroService]
+    SharedModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule],
+            declarations: [awesome_pipe_1.AwesomePipe, highlight_directive_1.HighlightDirective],
+            exports: [awesome_pipe_1.AwesomePipe, highlight_directive_1.HighlightDirective,
+                common_1.CommonModule, forms_1.FormsModule]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService])
-    ], HeroComponent);
-    return HeroComponent;
+        __metadata('design:paramtypes', [])
+    ], SharedModule);
+    return SharedModule;
 }());
-exports.HeroComponent = HeroComponent;
-//# sourceMappingURL=hero.component.3.js.map
+exports.SharedModule = SharedModule;
+//# sourceMappingURL=shared.module.js.map

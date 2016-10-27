@@ -9,21 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var hero_service_1 = require('./hero.service');
-var user_service_1 = require('../core/user.service');
-var HeroComponent = (function () {
-    function HeroComponent(userService) {
-        this.userName = '';
-        this.userName = userService.userName;
+var user_service_1 = require('./user.service');
+var TitleComponent = (function () {
+    function TitleComponent(userService) {
+        this.subtitle = '';
+        this.title = 'Angular Modules';
+        this.user = '';
+        this.user = userService.userName;
     }
-    HeroComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], TitleComponent.prototype, "subtitle", void 0);
+    TitleComponent = __decorate([
         core_1.Component({
-            template: "\n    <h2>Heroes of {{userName}}</h2>\n    <router-outlet></router-outlet>\n  ",
-            providers: [hero_service_1.HeroService]
+            moduleId: module.id,
+            selector: 'app-title',
+            templateUrl: 'title.component.html',
         }), 
         __metadata('design:paramtypes', [user_service_1.UserService])
-    ], HeroComponent);
-    return HeroComponent;
+    ], TitleComponent);
+    return TitleComponent;
 }());
-exports.HeroComponent = HeroComponent;
-//# sourceMappingURL=hero.component.3.js.map
+exports.TitleComponent = TitleComponent;
+//# sourceMappingURL=title.component.js.map

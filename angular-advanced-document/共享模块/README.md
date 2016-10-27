@@ -1,3 +1,5 @@
+final
+
 `shared.module.ts
 让SharedModule来管理这些共享的素材
 更新启动特性模块，导入SharedModule
@@ -19,7 +21,15 @@ UserService ，是靠 Angular 的依赖注入体系实现的，而不是模块�
 
 `core.module.ts
 UserService 和根目录下的其他组件，收集到单独的CoreModule中，并且 只在应用启动时导入它 一次 ， 而不会在其它地方导入它 。
-这样可以避免根模块太大、太乱
+这样可以避免根模块太大、太乱，从而干净整洁
 建议把一次性的类收集到CoreModule中，隐藏其实现细节，AppModule导入CoreModule来获取其能力。
 
 记住：根模块是整个应用的总指挥，不应该插手更多细节。
+
+
+`用 CoreModule.forRoot 配置核心服务
+只在应用的根模块 AppModule 中调用 forRoot 。 如果在其它模块（特别是惰性加载模块）中调用它则违反了设计意图，并会导致运行时错误。
+别忘了 导入 其返回结果，而且不要把它添加到 @NgModule 的其它任何列表中。
+
+`禁止多次导入 CoreModule
+只有根模块 AppModule 才能导入 CoreModule 。 如果惰性加载模块导入了它，就会 出问题

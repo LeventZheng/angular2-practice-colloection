@@ -1,3 +1,8 @@
+/* tslint:disable */
+// Same directive name and selector as
+// HighlightDirective in parent AppModule
+// It selects for both input boxes and  'highlight' attr
+// and it highlights in blue instead of gold
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,21 +14,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var hero_service_1 = require('./hero.service');
-var user_service_1 = require('../core/user.service');
-var HeroComponent = (function () {
-    function HeroComponent(userService) {
-        this.userName = '';
-        this.userName = userService.userName;
+var HighlightDirective = (function () {
+    function HighlightDirective(renderer, el) {
+        renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'powderblue');
+        console.log("* Contact highlight called for " + el.nativeElement.tagName);
     }
-    HeroComponent = __decorate([
-        core_1.Component({
-            template: "\n    <h2>Heroes of {{userName}}</h2>\n    <router-outlet></router-outlet>\n  ",
-            providers: [hero_service_1.HeroService]
-        }), 
-        __metadata('design:paramtypes', [user_service_1.UserService])
-    ], HeroComponent);
-    return HeroComponent;
+    HighlightDirective = __decorate([
+        core_1.Directive({ selector: '[highlight], input' }), 
+        __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef])
+    ], HighlightDirective);
+    return HighlightDirective;
 }());
-exports.HeroComponent = HeroComponent;
-//# sourceMappingURL=hero.component.3.js.map
+exports.HighlightDirective = HighlightDirective;
+//# sourceMappingURL=highlight.directive.js.map

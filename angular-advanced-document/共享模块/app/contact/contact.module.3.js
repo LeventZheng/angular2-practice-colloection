@@ -9,23 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var forms_1 = require('@angular/forms');
-var awesome_pipe_1 = require('./awesome.pipe');
+var shared_module_1 = require('../shared/shared.module');
 var contact_component_1 = require('./contact.component');
-/*
-       { ContactComponent }   from './contact.component';
-*/
 var contact_service_1 = require('./contact.service');
-var highlight_directive_1 = require('./highlight.directive');
 var contact_routing_module_3_1 = require('./contact-routing.module.3');
 var ContactModule = (function () {
     function ContactModule() {
     }
     ContactModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, contact_routing_module_3_1.ContactRoutingModule],
-            declarations: [contact_component_1.ContactComponent, highlight_directive_1.HighlightDirective, awesome_pipe_1.AwesomePipe],
+            imports: [shared_module_1.SharedModule, contact_routing_module_3_1.ContactRoutingModule],
+            // declarations: [ ContactComponent, HighlightDirective, AwesomePipe ],在SharedModule中
+            declarations: [contact_component_1.ContactComponent],
             providers: [contact_service_1.ContactService]
         }), 
         __metadata('design:paramtypes', [])
