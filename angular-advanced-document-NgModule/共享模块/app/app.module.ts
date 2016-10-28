@@ -12,7 +12,7 @@ import { CoreModule }         from './core/core.module';
 import { AppRoutingModule }   from './app-routing.module.3';
 
 @NgModule({
-  imports:      [ 
+  imports:      [
     BrowserModule, 
     ContactModule, 
     AppRoutingModule, 

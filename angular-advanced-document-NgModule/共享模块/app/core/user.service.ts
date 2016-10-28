@@ -7,12 +7,12 @@ export class UserServiceConfig {
 }
 
 @Injectable()
-/** Dummy version of an authenticated user service */
 export class UserService {
   id = nextId++;
   private _userName = 'Sherlock Holmes';
 
-  constructor(@Optional() config: UserServiceConfig) {
+  //@Optional表示该注入器可选
+  constructor( @Optional() config: UserServiceConfig) {
     if (config) { this._userName = config.userName; }
   }
 

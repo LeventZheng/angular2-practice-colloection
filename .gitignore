@@ -1,12 +1,14 @@
-displaying-data/node_modules/
 angular2-tour-of-heroes/node_modules/
-angular-forms/node_modules/
 angular-quickstart/node_modules/
 angular-webpack/node_modules/
-angular-develop-guide/node_modules/@angular/core/src/type.d.ts
 angular-develop-guide/node_modules/
 angular-routing/node_modules/
 angular-advanced-document/node_modules/
 angular-advanced-document/特性模块/node_modules/
 angular-advanced-document/用路由器实现延迟（ Lazy ）加载/node_modules/
 angular-advanced-document/共享模块/node_modules/
+angular-advanced-document-NgModule/用路由器实现延迟（ Lazy ）加载/node_modules/@angular/
+angular-advanced-document-NgModule/用路由器实现延迟（ Lazy ）加载/node_modules/
+angular-advanced-document-NgModule/特性模块/node_modules/
+angular-advanced-document-routingAndNavigate/node_modules/
+angular-advanced-document-NgModule/共享模块/node_modules/
