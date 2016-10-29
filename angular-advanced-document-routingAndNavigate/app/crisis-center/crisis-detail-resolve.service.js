@@ -36,4 +36,5 @@ var CrisisDetailResolve = (function () {
     return CrisisDetailResolve;
 }());
 exports.CrisisDetailResolve = CrisisDetailResolve;
+//处理 Crisis 数据读取和在 Crisis 不存在时将用户导航出去 
 //# sourceMappingURL=crisis-detail-resolve.service.js.map
