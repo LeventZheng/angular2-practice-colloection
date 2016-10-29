@@ -41,6 +41,8 @@ export class CrisisListComponent implements OnInit {
 
     // Navigate with relative link
     this.router.navigate([crisis.id], { relativeTo: this.route });
+    //当我们访问 危机中心 时，当前路径是 /crisis-center ，所以我们只要把 危机 的 id 添加到现有路径中就可以了。
+    //当路由器导航时，它使用当前路径 /crisis-center 并追加上此 id 。如果 id 为 1 ，结果路径就是 /crisis-center/1
   }
 
 }

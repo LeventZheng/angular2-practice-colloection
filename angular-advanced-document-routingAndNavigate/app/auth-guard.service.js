@@ -16,10 +16,12 @@ var AuthGuard = (function () {
         this.authService = authService;
         this.router = router;
     }
+    //守卫路由，也支持返回observable或promise以支持异步检查
     AuthGuard.prototype.canActivate = function (route, state) {
         var url = state.url;
         return this.checkLogin(url);
     };
+    //守卫子路由，也支持返回observable或promise以支持异步检查
     AuthGuard.prototype.canActivateChild = function (route, state) {
         return this.canActivate(route, state);
     };
@@ -52,4 +54,6 @@ var AuthGuard = (function () {
     return AuthGuard;
 }());
 exports.AuthGuard = AuthGuard;
+//RouterStateSnapshot.url 保存用户来自的 URL 并让路由器导航到登录页。 
+//这间接导致路由器自动中止了这次导航，我们返回 false 并不是必须的，但这样可以更清楚的表达意图 
 //# sourceMappingURL=auth-guard.service.js.map

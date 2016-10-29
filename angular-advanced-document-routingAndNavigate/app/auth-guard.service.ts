@@ -1,8 +1,8 @@
 import { Injectable }       from '@angular/core';
 import {
   CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
+  ActivatedRouteSnapshot,   //ActivatedRouteSnapshot 包含了 即将 被激活的路由
+  RouterStateSnapshot,      //RouterStateSnapshot 包含了该应用 即将 到达的状态
   CanActivateChild,
   NavigationExtras,
   CanLoad, Route
@@ -12,13 +12,14 @@ import { AuthService }      from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
-
+  
+  //守卫路由，也支持返回observable或promise以支持异步检查
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url: string = state.url;
 
     return this.checkLogin(url);
   }
-
+  //守卫子路由，也支持返回observable或promise以支持异步检查
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return this.canActivate(route, state);
   }
@@ -50,3 +51,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return false;
   }
 }
+
+//RouterStateSnapshot.url 保存用户来自的 URL 并让路由器导航到登录页。 
+//这间接导致路由器自动中止了这次导航，我们返回 false 并不是必须的，但这样可以更清楚的表达意图

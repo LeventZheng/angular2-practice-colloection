@@ -49,4 +49,10 @@ var AdminRoutingModule = (function () {
     return AdminRoutingModule;
 }());
 exports.AdminRoutingModule = AdminRoutingModule;
+// AdminComponent 下的子路由，有一个带 path 和 children 的子路由，但它没有使用 component 
+// 这并不是配置中的失误，而是在使用 无组件 路由。
+// 这样就不需要另一个仅用来分组路由的组件
+// 同时也允许我们守卫子路由
+//canActivate:引用 AuthGuard守卫路由
+//canActivateChild守卫子路由 
 //# sourceMappingURL=admin-routing.module.js.map

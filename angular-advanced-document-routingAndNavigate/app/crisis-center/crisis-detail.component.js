@@ -68,6 +68,11 @@ var CrisisDetailComponent = (function () {
         // Add a totally useless `foo` parameter for kicks.
         // Relative navigation back to the crises
         this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
+        //使用 Router 进行相对导航
+        //使用 ActivatedRoute 来告诉路由器我们正在 RouterState(激活路由组成的树) 中的什么地方
+        //为 router.navigate 方法中 链接参数数组 后的对象型参数指定 relativeTo 属性
+        //路由器就会把我们的导航信息和当前 URL 合并在一起
+        //当navigate改为navigateByUrl 方法时，导航 总是 绝对的
     };
     __decorate([
         core_1.HostBinding('@routeAnimation'), 
