@@ -75,7 +75,7 @@ export class CrisisDetailComponent implements OnInit {
             this.crisis = data.crisis;
         });
     }
-
+    
     cancel() {
         this.gotoCrises();
     }

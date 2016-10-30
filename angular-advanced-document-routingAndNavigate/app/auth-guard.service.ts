@@ -54,3 +54,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
 //RouterStateSnapshot.url 保存用户来自的 URL 并让路由器导航到登录页。 
 //这间接导致路由器自动中止了这次导航，我们返回 false 并不是必须的，但这样可以更清楚的表达意图
+
+// CanLoad 守卫来保证只在用户已经登录并尝试访问管理特性区时才加载一次 AdminModule
+//
