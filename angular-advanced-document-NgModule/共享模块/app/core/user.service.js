@@ -21,6 +21,7 @@ var UserServiceConfig = (function () {
 }());
 exports.UserServiceConfig = UserServiceConfig;
 var UserService = (function () {
+    //@Optional表示该注入器可选
     function UserService(config) {
         this.id = nextId++;
         this._userName = 'Sherlock Holmes';

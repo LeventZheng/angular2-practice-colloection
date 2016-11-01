@@ -8,7 +8,7 @@ final
 它声明并导出了工具性的管道、指令和组件类
 它重新导出了 CommonModule 和 FormsModule
 
-通过让 SharedModule 重新导出 CommonModule 和 FormsModule 模块，让生命这些组件的模块，
+通过让 SharedModule 重新导出 CommonModule 和 FormsModule 模块，让声明这些组件的模块，
 不用再重复导入 CommonModule 、 FormsModule 和 SharedModule 
 于是导入 SharedModule 的模块也同时 免费 获得了 CommonModule 和 FormsModule
 SharedModule 本身所声明的组件没绑定过 [(ngModel)]，所以不需要先把它列在 imports 中，只是起到合并导入的作用
