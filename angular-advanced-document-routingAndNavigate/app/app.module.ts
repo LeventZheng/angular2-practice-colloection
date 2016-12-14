@@ -11,7 +11,7 @@ import { CrisisCenterModule }   from './crisis-center/crisis-center.module';
 
 import { LoginComponent }       from './login.component';
 
-import { DialogService }          from './dialog.service';
+import { DialogService }        from './dialog.service';
 
 @NgModule({
   imports: [
